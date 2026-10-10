@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE_CONFIG, SITE_TITLE } from "../config";
+---
+<Layout title={SITE_CONFIG.ui.contact} description={`Écrire à ${SITE_TITLE}.`}>
+  <section class="hm-inst hm-coquille">
+    <h1>{SITE_CONFIG.ui.contact}</h1>
+    <p>
+      <a href={`mailto:${SITE_CONFIG.contact_email}`}>{SITE_CONFIG.contact_email}</a>
+    </p>
+  </section>
+</Layout>

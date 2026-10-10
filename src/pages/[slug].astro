@@ -1,0 +1,166 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import CoverImage from "../components/CoverImage.astro";
+import ArticleTeaser from "../components/ArticleTeaser.astro";
+import PageAbout from "../components/PageAbout.astro";
+import PageLegal from "../components/PageLegal.astro";
+import PagePrivacy from "../components/PagePrivacy.astro";
+import { SITE_CONFIG, SITE_TITLE, SITE_URL, SITE_PATHS, categoryLabel } from "../config";
+import { liveArticles, formatDate } from "../lib/live";
+import { withOrgAuthor, siteOrganization } from "../lib/schema";
+
+type InstPage = "about" | "legal" | "privacy";
+
+export async function getStaticPaths() {
+  const reserved = new Set(Object.values(SITE_PATHS));
+  const posts = liveArticles(await getCollection("articles")).filter((a) => !reserved.has(a.slug));
+  const articles = posts.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+  const inst: { params: { slug: string }; props: { page: InstPage } }[] = [
+    { params: { slug: SITE_PATHS.about }, props: { page: "about" } },
+    { params: { slug: SITE_PATHS.legal }, props: { page: "legal" } },
+    { params: { slug: SITE_PATHS.privacy }, props: { page: "privacy" } },
+  ];
+  return [...articles, ...inst];
+}
+
+interface Props {
+  article?: CollectionEntry<"articles">;
+  page?: InstPage;
+}
+
+const { article, page } = Astro.props as Props;
+const org = siteOrganization(SITE_TITLE, SITE_URL);
+const aboutSchema = {
+  ...org,
+  "@context": "https://schema.org",
+  description: SITE_CONFIG.author.bio,
+  email: SITE_CONFIG.contact_email,
+};
+
+let related: CollectionEntry<"articles">[] = [];
+let lateraux: CollectionEntry<"articles">[] = [];
+let schema: unknown = null;
+let dateLabel = "";
+let rubrique = "";
+let Content: Awaited<ReturnType<NonNullable<typeof article>["render"]>>["Content"] | null = null;
+
+if (article) {
+  const rendered = await article.render();
+  Content = rendered.Content;
+  dateLabel = formatDate(article.data.date, SITE_CONFIG.locale);
+  const others = liveArticles(await getCollection("articles")).filter((p) => p.slug !== article.slug);
+  related = others.filter((p) => p.data.categorySlug === article.data.categorySlug).slice(0, 4);
+  lateraux = others.slice(0, 5);
+  const fallbackSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.data.title,
+    description: article.data.excerpt,
+    image: article.data.image,
+    datePublished: article.data.date.toISOString(),
+    mainEntityOfPage: `${SITE_URL}/${article.slug}/`,
+  };
+  schema = withOrgAuthor(article.data.schemaJson || fallbackSchema, SITE_TITLE, SITE_URL, SITE_PATHS.about);
+  rubrique = categoryLabel(article.data.categorySlug || article.data.category);
+}
+
+const layoutTitle = page === "about"
+  ? SITE_CONFIG.ui.about
+  : page === "legal"
+    ? SITE_CONFIG.ui.legalNotice
+    : page === "privacy"
+      ? SITE_CONFIG.ui.privacyPolicy
+      : (article?.data.metaTitle || article?.data.title || SITE_TITLE);
+
+const layoutDescription = page === "about"
+  ? SITE_CONFIG.author.bio
+  : page === "legal"
+    ? `Informations légales de ${SITE_TITLE}.`
+    : page === "privacy"
+      ? `Traitement des données sur ${SITE_TITLE}.`
+      : article?.data.excerpt;
+---
+<Layout
+  title={layoutTitle}
+  description={layoutDescription}
+  ogImage={article?.data.image}
+  ogType={article ? "article" : "website"}
+>
+  {page === "about" && (
+    <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(aboutSchema)} />
+  )}
+  {article && schema && (
+    <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  )}
+
+  {page === "about" && <PageAbout />}
+  {page === "legal" && <PageLegal />}
+  {page === "privacy" && <PagePrivacy />}
+
+  {article && Content && (
+    <div class="hm-feuillet">
+      <div class="hm-coquille hm-feuillet__cadre">
+        <article>
+          <nav data-slot="fil" aria-label={SITE_CONFIG.ui.breadcrumbAria}>
+            <a href="/">{SITE_CONFIG.ui.home}</a>
+            <span> / </span>
+            <a href={`/category/${article.data.categorySlug}/`}>{rubrique}</a>
+          </nav>
+          <p data-slot="kicker">{rubrique}</p>
+          <h1 data-slot="titre">{article.data.title}</h1>
+          <p data-slot="meta">
+            {SITE_CONFIG.ui.publishedBy}
+            {" "}
+            <a href={`/${SITE_PATHS.about}/`}>{SITE_CONFIG.author.name}</a>
+            {" · "}
+            <time datetime={article.data.date.toISOString()}>{dateLabel}</time>
+          </p>
+          <div data-slot="cover">
+            {article.data.image && (
+              <CoverImage
+                src={article.data.image}
+                alt={article.data.title}
+                loading="eager"
+                fetchpriority="high"
+                width={1200}
+                height={800}
+              />
+            )}
+          </div>
+          <div class="hm-corps" data-slot="corps">
+            <Content />
+          </div>
+        </article>
+        <aside class="hm-laterale" data-slot="latérale">
+          <p class="hm-laterale__titre">{SITE_CONFIG.ui.recentArticles}</p>
+          {lateraux.map((p) => (
+            <p>
+              <a href={`/${p.slug}/`}>{p.data.title}</a>
+            </p>
+          ))}
+        </aside>
+      </div>
+      <section class="hm-coquille hm-suite" data-slot="suite" aria-labelledby="suite-lecture">
+        {related.length > 0 && (
+          <>
+            <h2 id="suite-lecture">{SITE_CONFIG.ui.alsoRead}</h2>
+            <div class="hm-suite__grille">
+              {related.map((p) => (
+                <ArticleTeaser
+                  href={`/${p.slug}/`}
+                  title={p.data.title}
+                  image={p.data.image}
+                  rubrique={categoryLabel(p.data.categorySlug || p.data.category)}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </section>
+    </div>
+  )}
+</Layout>

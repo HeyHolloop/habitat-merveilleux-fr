@@ -1,0 +1,39 @@
+---
+import fs from "node:fs";
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+  width?: number;
+  height?: number;
+}
+
+const {
+  src,
+  alt,
+  class: className,
+  loading = "lazy",
+  fetchpriority,
+  width,
+  height,
+} = Astro.props;
+
+const webp =
+  src.startsWith("/") &&
+  /\.(jpg|jpeg)$/i.test(src) &&
+  fs.existsSync(`public${src.replace(/\.(jpg|jpeg)$/i, ".webp")}`)
+    ? src.replace(/\.(jpg|jpeg)$/i, ".webp")
+    : null;
+---
+
+{webp ? (
+  <picture>
+    <source srcset={webp} type="image/webp" />
+    <img src={src} alt={alt} class={className} loading={loading} fetchpriority={fetchpriority} width={width} height={height} />
+  </picture>
+) : (
+  <img src={src} alt={alt} class={className} loading={loading} fetchpriority={fetchpriority} width={width} height={height} />
+)}

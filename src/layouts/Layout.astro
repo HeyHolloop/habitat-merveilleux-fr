@@ -1,0 +1,96 @@
+---
+import "../styles/journal.css";
+import "../styles/article-blocks.css";
+import Bandeau from "../components/Bandeau.astro";
+import PiedPage from "../components/PiedPage.astro";
+import { SITE_TITLE, SITE_URL, SITE_DESCRIPTION, SITE_CONFIG } from "../config";
+import { siteOrganization } from "../lib/schema";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  ogImage = SITE_CONFIG.hero.image || "/images/accroche.jpg",
+  ogType = "website",
+  noindex = false,
+} = Astro.props;
+
+const lang = (SITE_CONFIG.locale || "fr-FR").split("-")[0] || "fr";
+const canonical = new URL(Astro.url.pathname, SITE_URL + "/").href;
+const fullTitle = title;
+const ogAbs = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
+const org = siteOrganization(SITE_TITLE, SITE_URL);
+const structured = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      ...org,
+      "@type": "NewsMediaOrganization",
+      description: SITE_DESCRIPTION,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL + "/",
+      name: SITE_TITLE,
+      inLanguage: SITE_CONFIG.locale || "fr-FR",
+      publisher: { "@id": org["@id"] },
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogAbs} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content={SITE_CONFIG.locale.replace("-", "_")} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogAbs} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structured)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="hm-skip" href="#main">{SITE_CONFIG.ui.skipToContent}</a>
+    <Bandeau />
+    <main id="main">
+      <slot />
+    </main>
+    <PiedPage />
+    <script is:inline src="/article-blocks.js"></script>
+    <script is:inline>
+      (function () {
+        var btn = document.querySelector("[data-hm-menu]");
+        var nav = document.querySelector("[data-hm-nav]");
+        if (!btn || !nav) return;
+        btn.addEventListener("click", function () {
+          var open = nav.classList.toggle("hm-nav--ouvert");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      })();
+    </script>
+  </body>
+</html>

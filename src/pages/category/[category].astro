@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ArticleTeaser from "../../components/ArticleTeaser.astro";
+import { CATEGORIES, SITE_CONFIG, categoryLabel } from "../../config";
+import { liveArticles } from "../../lib/live";
+
+export async function getStaticPaths() {
+  const posts = liveArticles(await getCollection("articles"));
+  return CATEGORIES.map((c) => ({
+    params: { category: c.slug },
+    props: {
+      rubrique: c,
+      posts: posts.filter((p) => p.data.categorySlug === c.slug),
+    },
+  }));
+}
+
+const { rubrique, posts } = Astro.props;
+const heroTitle = rubrique.hero_title || rubrique.label;
+const seoIntro = rubrique.seo_intro || rubrique.description || "";
+const others = CATEGORIES.filter((c) => c.slug !== rubrique.slug).slice(0, 3);
+---
+<Layout title={heroTitle} description={seoIntro}>
+  <section class="hm-cat">
+    <div class="hm-coquille">
+      <nav class="hm-filariane" aria-label={SITE_CONFIG.ui.breadcrumbAria}>
+        <a href="/">{SITE_CONFIG.ui.home}</a>
+        <span> / </span>
+        <span>{rubrique.label}</span>
+      </nav>
+      <h1>{heroTitle}</h1>
+      {seoIntro && <p class="hm-cat__intro">{seoIntro}</p>}
+      <div class="hm-cat__grille">
+        {posts.map((p) => (
+          <ArticleTeaser
+            href={`/${p.slug}/`}
+            title={p.data.title}
+            excerpt={p.data.excerpt}
+            image={p.data.image}
+            rubrique={categoryLabel(p.data.categorySlug || p.data.category)}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+  {others.length > 0 && (
+    <section class="hm-rubriques">
+      <div class="hm-coquille">
+        <p class="hm-rubriques__titre">{SITE_CONFIG.ui.discover}</p>
+        <div class="hm-rubriques__grille">
+          {others.map((c) => (
+            <a class="hm-rubrique" href={`/category/${c.slug}/`}>
+              <p class="hm-rubrique__nom">{c.label}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

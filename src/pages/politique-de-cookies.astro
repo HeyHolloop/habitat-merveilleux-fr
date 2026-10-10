@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE_CONFIG, SITE_TITLE } from "../config";
+---
+<Layout title={SITE_CONFIG.ui.cookiesPolicy} description={`Cookies sur ${SITE_TITLE}.`}>
+  <section class="hm-inst hm-coquille">
+    <h1>{SITE_CONFIG.ui.cookiesPolicy}</h1>
+    <p>
+      {SITE_TITLE} n'utilise pas de cookies de mesure d'audience ni de cookies publicitaires.
+      Seuls des cookies strictement techniques, indispensables au fonctionnement du site ou de l'hébergeur, peuvent être déposés.
+    </p>
+    <p>
+      Vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Cela n'empêche pas la lecture des articles.
+    </p>
+  </section>
+</Layout>

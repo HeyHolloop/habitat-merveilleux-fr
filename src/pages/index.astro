@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import AccrocheHome from "../components/AccrocheHome.astro";
+import GrilleRubriques from "../components/GrilleRubriques.astro";
+import FilRecent from "../components/FilRecent.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { liveArticles } from "../lib/live";
+
+const posts = liveArticles(await getCollection("articles"));
+const recents = posts.slice(0, 15);
+---
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION} ogType="website">
+  <AccrocheHome />
+  <GrilleRubriques />
+  <FilRecent items={recents} />
+</Layout>

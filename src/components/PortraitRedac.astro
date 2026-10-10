@@ -1,0 +1,9 @@
+---
+import { SITE_CONFIG, SITE_PATHS } from "../config";
+---
+<section>
+  <h2>{SITE_CONFIG.ui.masthead}</h2>
+  <p>{SITE_CONFIG.author.name}</p>
+  <p>{SITE_CONFIG.author.bio}</p>
+  <p><a href={`/${SITE_PATHS.about}/`}>{SITE_CONFIG.ui.aboutAuthor}</a></p>
+</section>

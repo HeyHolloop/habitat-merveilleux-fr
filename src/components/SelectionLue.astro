@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SITE_CONFIG } from "../config";
+
+interface Props {
+  items: CollectionEntry<"articles">[];
+}
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <section>
+    <h2>{SITE_CONFIG.ui.mostReadArticles}</h2>
+    {items.map((p) => (
+      <p><a href={`/${p.slug}/`}>{p.data.title}</a></p>
+    ))}
+  </section>
+)}

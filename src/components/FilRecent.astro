@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArticleTeaser from "./ArticleTeaser.astro";
+import { SITE_CONFIG, categoryLabel } from "../config";
+
+interface Props {
+  items: CollectionEntry<"articles">[];
+}
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <section class="hm-fil">
+    <div class="hm-coquille">
+      <p class="hm-fil__titre">{SITE_CONFIG.ui.latestArticles}</p>
+      <div class="hm-fil__grille">
+        {items.map((p) => (
+          <ArticleTeaser
+            href={`/${p.slug}/`}
+            title={p.data.title}
+            image={p.data.image}
+            rubrique={categoryLabel(p.data.categorySlug || p.data.category)}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+)}

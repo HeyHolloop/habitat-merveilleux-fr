@@ -1,0 +1,16 @@
+---
+import { CATEGORIES, SITE_CONFIG } from "../config";
+---
+<section class="hm-rubriques">
+  <div class="hm-coquille">
+    <p class="hm-rubriques__titre">{SITE_CONFIG.ui.categories}</p>
+    <div class="hm-rubriques__grille">
+      {CATEGORIES.map((c) => (
+        <a class="hm-rubrique" href={`/category/${c.slug}/`}>
+          <p class="hm-rubrique__nom">{c.label}</p>
+          <p class="hm-rubrique__texte">{c.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

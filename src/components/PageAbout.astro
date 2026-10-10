@@ -1,0 +1,21 @@
+---
+import { SITE_CONFIG, SITE_TITLE, CATEGORIES } from "../config";
+---
+<section class="hm-inst hm-coquille">
+  <h1>{SITE_TITLE}</h1>
+  <p>{SITE_CONFIG.author.bio}</p>
+  <h2>Ce que vous y trouvez</h2>
+  <p>
+    Le média publie des guides pratiques sur la maison : décoration, travaux et bricolage, jardin, immobilier et vie quotidienne. Les textes visent des gestes concrets, pas une vitrine de catalogue.
+  </p>
+  <h2>Cinq rubriques</h2>
+  <ul>
+    {CATEGORIES.map((c) => (
+      <li><a href={`/category/${c.slug}/`}>{c.label}</a> — {c.description}</li>
+    ))}
+  </ul>
+  <h2>Signature</h2>
+  <p>
+    Les articles sont signés {SITE_CONFIG.author.name}. C'est le nom de la rédaction, pas celui d'une personne inventée.
+  </p>
+</section>

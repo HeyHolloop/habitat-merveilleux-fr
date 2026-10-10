@@ -1,0 +1,92 @@
+{
+  "site_title": "Habitat Merveilleux",
+  "site_url": "https://www.habitat-merveilleux.fr",
+  "site_description": "Conseils pratiques, idées déco et astuces pour la maison : décoration, travaux, jardin, immobilier et vie pratique.",
+  "locale": "fr-FR",
+  "paths": {
+    "about": "a-propos",
+    "legal": "mentions-legales",
+    "privacy": "politique-de-confidentialite"
+  },
+  "contact_email": "contact@habitat-merveilleux.fr",
+  "legal": {
+    "editor_name": "Habitat Merveilleux",
+    "publication_director": "La rédaction",
+    "host": "o2switch, Chemin des Pardiaux, 63000 Clermont-Ferrand"
+  },
+  "author": {
+    "name": "Habitat Merveilleux",
+    "role": "Rédaction",
+    "avatar": "",
+    "bio": "Habitat Merveilleux est un média pratique sur la maison. Les articles sont signés au nom de la rédaction, pas d'un journaliste fictif."
+  },
+  "hero": {
+    "title": "Habitat Merveilleux",
+    "subtitle": "Conseils pratiques, idées déco et astuces pour transformer la maison au quotidien — décoration, travaux, jardin, immobilier et vie pratique.",
+    "image": "/images/accroche.jpg"
+  },
+  "tools": {
+    "title": "",
+    "lead": "",
+    "items": []
+  },
+  "ui_strings": {
+    "readMore": "Lire l'article",
+    "publishedBy": "Par",
+    "alsoRead": "À lire également",
+    "aboutAuthor": "À propos",
+    "latestArticles": "Dernières publications",
+    "mostReadArticles": "Les plus lus",
+    "recentArticles": "Derniers articles",
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "categories": "Rubriques",
+    "legalNotice": "Mentions légales",
+    "privacyPolicy": "Politique de confidentialité",
+    "cookiesPolicy": "Politique de cookies",
+    "discover": "Découvrir",
+    "newContentComing": "Le contenu arrive bientôt.",
+    "breadcrumbAria": "Fil d'Ariane",
+    "masthead": "Habitat Merveilleux",
+    "skipToContent": "Aller au contenu",
+    "menu": "Menu"
+  },
+  "categories": [
+    {
+      "label": "Décoration",
+      "slug": "decoration",
+      "description": "Couleurs, agencement, styles et idées pour habiller les pièces.",
+      "hero_title": "Décoration",
+      "seo_intro": "Couleurs, agencement, styles et idées pour habiller les pièces."
+    },
+    {
+      "label": "Travaux et bricolage",
+      "slug": "travaux-bricolage",
+      "description": "Rénovation, électricité, plomberie, isolation et gestes de chantier.",
+      "hero_title": "Travaux et bricolage",
+      "seo_intro": "Rénovation, électricité, plomberie, isolation et gestes de chantier."
+    },
+    {
+      "label": "Jardin",
+      "slug": "jardin",
+      "description": "Aménagement extérieur, plantes, potager et entretien au fil des saisons.",
+      "hero_title": "Jardin",
+      "seo_intro": "Aménagement extérieur, plantes, potager et entretien au fil des saisons."
+    },
+    {
+      "label": "Immobilier",
+      "slug": "immobilier",
+      "description": "Acheter, vendre, louer et comprendre les démarches liées au logement.",
+      "hero_title": "Immobilier",
+      "seo_intro": "Acheter, vendre, louer et comprendre les démarches liées au logement."
+    },
+    {
+      "label": "Vie pratique",
+      "slug": "vie-pratique",
+      "description": "Astuces du quotidien, entretien de la maison et décisions utiles.",
+      "hero_title": "Vie pratique",
+      "seo_intro": "Astuces du quotidien, entretien de la maison et décisions utiles."
+    }
+  ]
+}

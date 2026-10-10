@@ -1,0 +1,32 @@
+---
+import { SITE_TITLE, SITE_CONFIG, CATEGORIES, SITE_PATHS } from "../config";
+---
+<footer class="hm-pied">
+  <div class="hm-coquille">
+    <div class="hm-pied__grille">
+      <div>
+        <p class="hm-pied__marque">{SITE_TITLE}</p>
+        <p>{SITE_CONFIG.hero.subtitle}</p>
+      </div>
+      <div>
+        <p class="hm-pied__kicker">{SITE_CONFIG.ui.categories}</p>
+        <ul class="hm-pied__liste">
+          {CATEGORIES.map((c) => (
+            <li><a href={`/category/${c.slug}/`}>{c.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="hm-pied__kicker">{SITE_CONFIG.ui.about}</p>
+        <ul class="hm-pied__liste">
+          <li><a href={`/${SITE_PATHS.about}/`}>{SITE_CONFIG.ui.about}</a></li>
+          <li><a href="/contact/">{SITE_CONFIG.ui.contact}</a></li>
+          <li><a href={`/${SITE_PATHS.legal}/`}>{SITE_CONFIG.ui.legalNotice}</a></li>
+          <li><a href={`/${SITE_PATHS.privacy}/`}>{SITE_CONFIG.ui.privacyPolicy}</a></li>
+          <li><a href="/politique-de-cookies/">{SITE_CONFIG.ui.cookiesPolicy}</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="hm-pied__bas">{SITE_TITLE}</p>
+  </div>
+</footer>

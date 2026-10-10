@@ -1,0 +1,23 @@
+---
+import CoverImage from "./CoverImage.astro";
+interface Props {
+  href: string;
+  title: string;
+  excerpt?: string;
+  image?: string;
+  rubrique?: string;
+  dateLabel?: string;
+}
+const { href, title, image, rubrique } = Astro.props;
+---
+<a class="hm-carte" href={href}>
+  <div class="hm-carte__visuel">
+    {image && (
+      <CoverImage src={image} alt={title} width={640} height={400} loading="lazy" />
+    )}
+  </div>
+  <div class="hm-carte__corps">
+    {rubrique && <p class="hm-carte__kicker">{rubrique}</p>}
+    <p class="hm-carte__titre">{title}</p>
+  </div>
+</a>

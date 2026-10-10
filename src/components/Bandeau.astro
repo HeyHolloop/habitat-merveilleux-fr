@@ -1,0 +1,24 @@
+---
+import { SITE_CONFIG, CATEGORIES, SITE_PATHS } from "../config";
+const here = Astro.url.pathname;
+---
+<header class="hm-bandeau">
+  <div class="hm-coquille hm-bandeau__rang">
+    <a class="hm-masthead" href="/">{SITE_CONFIG.ui.masthead}</a>
+    <button class="hm-nav-toggle" type="button" data-hm-menu aria-expanded="false" aria-controls="hm-nav">
+      {SITE_CONFIG.ui.menu}
+    </button>
+    <nav class="hm-nav" id="hm-nav" data-hm-nav aria-label={SITE_CONFIG.ui.categories}>
+      {CATEGORIES.map((c) => (
+        <a
+          href={`/category/${c.slug}/`}
+          class={here.includes(`/category/${c.slug}/`) ? "hm-nav__courant" : undefined}
+          aria-current={here.includes(`/category/${c.slug}/`) ? "page" : undefined}
+        >
+          {c.label}
+        </a>
+      ))}
+      <a href={`/${SITE_PATHS.about}/`}>{SITE_CONFIG.ui.about}</a>
+    </nav>
+  </div>
+</header>
