@@ -1,14 +1,56 @@
 ---
-import { CATEGORIES, SITE_CONFIG } from "../config";
+const rubriques = [
+  {
+    href: "/category/decoration/",
+    nom: "Décoration",
+    image: "/images/home/decoration.jpg",
+    alt: "Une maison décorée",
+    texte:
+      "Explorez les principes fondamentaux de l'aménagement intérieur avec nos ressources exclusives. Du choix des couleurs à l'agencement des espaces, en passant par les styles décoratifs et les tendances actuelles, notre expertise vous accompagne à chaque étape de vos projets d'embellissement pour transformer votre intérieur en un havre de bien-être reflétant votre personnalité.",
+  },
+  {
+    href: "/category/travaux-bricolage/",
+    nom: "Travaux & Bricolage",
+    image: "/images/home/travaux-bricolage.jpg",
+    alt: "Un couple en train de bricoler",
+    texte:
+      "Relevez les défis de la rénovation et transformez les contraintes en opportunités créatives. Isolation thermique, électricité, plomberie ou finitions esthétiques — plongez dans nos guides détaillés pour développer des compétences pratiques qui valoriseront votre habitat tout en réalisant des économies substantielles.",
+  },
+  {
+    href: "/category/jardin/",
+    nom: "Jardin",
+    image: "/images/home/jardin.jpg",
+    alt: "Une femme en train de jardiner",
+    texte:
+      "Optimisez votre espace extérieur pour un équilibre entre esthétisme et fonctionnalité. Aménagement paysager, potager bio, systèmes d'irrigation ou mobilier d'extérieur — notre expertise vous guide pour créer et entretenir un jardin épanouissant qui prolonge harmonieusement votre espace de vie.",
+  },
+  {
+    href: "/category/immobilier/",
+    nom: "Immobilier",
+    image: "/images/home/immobilier.jpg",
+    alt: "Illustration transaction immobilière",
+    texte:
+      "Développez une stratégie patrimoniale qui sécurisera votre avenir et celui de vos proches. Investissement locatif, prêts immobiliers, fiscalité ou gestion de copropriété — accédez à des analyses spécialisées qui vous permettront de prendre des décisions éclairées sur un marché complexe.",
+  },
+  {
+    href: "/category/vie-pratique/",
+    nom: "Vie Pratique",
+    image: "/images/home/vie-pratique.jpg",
+    alt: "Un couple dans sa maison",
+    texte:
+      "Maîtrisez les aspects quotidiens qui font la différence dans la gestion de votre foyer. Économies d'énergie, organisation des espaces, gestion administrative ou préparation aux imprévus — nos contenus vous offrent des solutions concrètes pour simplifier votre quotidien.",
+  },
+];
 ---
 <section class="hm-rubriques">
   <div class="hm-coquille">
-    <p class="hm-rubriques__titre">{SITE_CONFIG.ui.categories}</p>
+    <h2 class="hm-rubriques__titre">Nos domaines d'expertise</h2>
     <div class="hm-rubriques__grille">
-      {CATEGORIES.map((c) => (
-        <a class="hm-rubrique" href={`/category/${c.slug}/`}>
-          <p class="hm-rubrique__nom">{c.label}</p>
-          <p class="hm-rubrique__texte">{c.description}</p>
+      {rubriques.map((c) => (
+        <a class="hm-rubrique" href={c.href}>
+          <img src={c.image} alt={c.alt} width="370" height="439" />
+          <p class="hm-rubrique__nom">{c.nom}</p>
+          <p class="hm-rubrique__texte">{c.texte}</p>
         </a>
       ))}
     </div>

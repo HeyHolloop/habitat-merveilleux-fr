@@ -1,16 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { SITE_CONFIG, SITE_TITLE } from "../config";
+import { SITE_CONFIG } from "../config";
 ---
-<Layout title={SITE_CONFIG.ui.cookiesPolicy} description={`Cookies sur ${SITE_TITLE}.`}>
+<Layout title={SITE_CONFIG.ui.cookiesPolicy} description="Politique de cookies de Habitat Merveilleux.">
   <section class="hm-inst hm-coquille">
     <h1>{SITE_CONFIG.ui.cookiesPolicy}</h1>
+    <p><em>Dernière mise à jour : 28 septembre 2026.</em></p>
+
+    <h2>1. Qu'est-ce qu'un cookie ?</h2>
     <p>
-      {SITE_TITLE} n'utilise pas de cookies de mesure d'audience ni de cookies publicitaires.
-      Seuls des cookies strictement techniques, indispensables au fonctionnement du site ou de l'hébergeur, peuvent être déposés.
+      Un cookie est un petit fichier déposé sur votre terminal lors de la consultation d'un site. Il peut être nécessaire au fonctionnement de la page, ou servir à mesurer l'audience ou à afficher de la publicité.
     </p>
+
+    <h2>2. Ce que fait Habitat Merveilleux</h2>
     <p>
-      Vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Cela n'empêche pas la lecture des articles.
+      L'accueil servi ne charge pas de script Google Analytics ni Google AdSense. Le site ne décrit donc pas de cookies d'audience ou de publicité. L'hébergeur peut traiter des données de connexion pour délivrer et sécuriser les pages. Ce traitement n'est pas une régie publicitaire.
+    </p>
+    <p>Il n'y a pas de bannière de consentement tant qu'aucun traceur soumis à consentement n'est déposé.</p>
+
+    <h2>3. Vos choix</h2>
+    <p>
+      Vous pouvez supprimer ou bloquer les cookies dans les paramètres de votre navigateur. Le formulaire de contact ne dépend pas d'un cookie publicitaire.
+    </p>
+
+    <h2>4. Contact</h2>
+    <p>
+      Pour toute question : {SITE_CONFIG.contact_email}. La politique de confidentialité précise le responsable de traitement et vos droits.
     </p>
   </section>
 </Layout>

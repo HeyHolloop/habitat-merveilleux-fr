@@ -198,20 +198,44 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .hm-accroche {
-  padding: 2.6rem 0 1.4rem;
+  padding: 2.2rem 0 1.2rem;
 }
 .hm-accroche h1 {
   font-family: "DM Serif Display", serif;
-  font-size: clamp(2.1rem, 4vw, 3.1rem);
-  line-height: 1.15;
-  margin: 0 0 0.8rem;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1.05;
+  margin: 0 0 0.7rem;
   font-weight: 400;
 }
+.hm-accroche h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  margin: 2rem 0 1rem;
+}
 .hm-accroche__chapo {
-  max-width: 42rem;
-  margin: 0;
-  color: var(--mute);
+  max-width: 52rem;
+  margin: 0 0 1.4rem;
+  font-style: italic;
   font-size: 1.05rem;
+}
+.hm-duo {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 1.4rem;
+  align-items: center;
+  margin: 0.4rem 0 0.2rem;
+}
+.hm-duo img,
+.hm-duo__large {
+  width: 100%;
+  height: auto;
+}
+.hm-duo__large {
+  max-width: 420px;
+}
+@media (max-width: 700px) {
+  .hm-duo { grid-template-columns: 1fr; }
 }
 
 .hm-rubriques { padding: 0.5rem 0 2rem; }
@@ -233,15 +257,21 @@ img { max-width: 100%; height: auto; display: block; }
   display: block;
   border: 1px solid var(--filet);
   background: var(--paper);
-  padding: 1.1rem 1rem 1.2rem;
+  padding: 0 0 1.1rem;
+  overflow: hidden;
+}
+.hm-rubrique img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
 }
 .hm-rubrique__nom {
   font-family: "DM Serif Display", serif;
   font-size: 1.15rem;
-  margin: 0 0 0.4rem;
+  margin: 0.8rem 0.85rem 0.4rem;
 }
 .hm-rubrique__texte {
-  margin: 0;
+  margin: 0 0.85rem;
   color: var(--mute);
   font-size: 0.9rem;
 }

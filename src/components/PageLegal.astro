@@ -1,20 +1,24 @@
 ---
-import { SITE_CONFIG, SITE_TITLE, SITE_URL, SITE_PATHS } from "../config";
-const host = SITE_URL.replace(/^https?:\/\//, "").replace(/\/$/, "");
+import { SITE_CONFIG } from "../config";
 ---
 <section class="hm-inst hm-coquille">
   <h1>{SITE_CONFIG.ui.legalNotice}</h1>
   <p>
-    Bienvenue sur <strong>{SITE_TITLE}</strong>. En naviguant sur ce site (accessible via {host}), vous acceptez les présentes Conditions Générales d'Utilisation (CGU).
+    Bienvenue sur Habitat Merveilleux, un site dédié à la décoration, aux travaux &amp; bricolage, au jardin, à l'immobilier et à la vie pratique. En naviguant sur ce site, vous acceptez les présentes Conditions Générales d'Utilisation (CGU).
   </p>
   <p>Si vous n'acceptez pas ces conditions, veuillez cesser d'utiliser notre site.</p>
 
   <h2>1. Objet du site</h2>
+  <p>Habitat Merveilleux propose :</p>
+  <ul>
+    <li>Des conseils et idées pour la décoration intérieure et l'aménagement des espaces</li>
+    <li>Des guides pratiques pour les travaux de rénovation et le bricolage</li>
+    <li>Des solutions d'aménagement et d'entretien pour votre jardin</li>
+    <li>Des conseils en investissement immobilier et gestion patrimoniale</li>
+    <li>Des astuces pour optimiser la vie pratique au quotidien</li>
+  </ul>
   <p>
-    {SITE_TITLE} est un site d'information proposant des ressources, des articles et des conseils pratiques sur ses thématiques de prédilection : décoration, travaux et bricolage, jardin, immobilier et vie pratique.
-  </p>
-  <p>
-    Ce site a pour vocation d'informer et d'accompagner ses visiteurs à travers des contenus gratuits, des analyses et des ressources.
+    Ce site est informatif et vise à vous accompagner dans la transformation de votre habitat en un véritable cocon qui vous ressemble.
   </p>
 
   <h2>2. Accès au site</h2>
@@ -27,72 +31,59 @@ const host = SITE_URL.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
   <h2>3. Propriété intellectuelle</h2>
   <p>
-    Tous les contenus publiés sur {SITE_TITLE} (textes, images, graphismes, logo, ressources, etc.) sont protégés par les lois en vigueur sur la propriété intellectuelle.
+    Tous les contenus publiés sur Habitat Merveilleux (textes, images, graphismes, logo, etc.) sont protégés par les lois en vigueur sur la propriété intellectuelle.
   </p>
   <p>
     Toute reproduction, modification, distribution ou exploitation des contenus, sans autorisation préalable, est strictement interdite. Les marques et noms commerciaux mentionnés appartiennent à leurs propriétaires respectifs.
   </p>
 
-  <h2>4. Responsabilité</h2>
+  <h2>4. Responsabilité et Sécurité (Clause Importante)</h2>
   <p>
-    <strong>Contenus publiés :</strong> Les informations présentées sur {SITE_TITLE} sont fournies à titre informatif et peuvent évoluer. Bien que nous mettions tout en œuvre pour garantir leur exactitude, nous ne pouvons être tenus responsables en cas d'erreur, d'omission ou de contenu obsolète.
+    <strong>Contenus publiés :</strong> Les informations présentées sur Habitat Merveilleux sont fournies à titre informatif et peuvent évoluer. Bien que nous mettions tout en œuvre pour garantir leur exactitude, nous ne pouvons être tenus responsables en cas d'erreur, d'omission ou de contenu obsolète.
   </p>
   <p>
-    <strong>Conseil professionnel :</strong> Les articles, analyses et ressources partagés sur notre site ne constituent en aucun cas des recommandations professionnelles personnalisées. Pour tout conseil adapté à votre situation particulière, nous vous recommandons de consulter un professionnel qualifié.
+    <strong>Avertissement Bricolage et Travaux :</strong> La pratique du bricolage et la réalisation de travaux comportent des risques (coupures, chutes, risques électriques, structurels, etc.). Les tutoriels et conseils sont donnés à titre indicatif. L'utilisateur est seul responsable de sa propre sécurité et de la bonne réalisation des travaux. Habitat Merveilleux et OVELIUM déclinent toute responsabilité quant aux dommages matériels ou corporels pouvant survenir lors de la mise en application des conseils du site. Pour tout travail touchant aux structures porteuses, à l'électricité, au gaz ou à la plomberie complexe, il est impératif de faire appel à un artisan qualifié et assuré.
   </p>
   <p>
     <strong>Liens externes :</strong> Le site peut contenir des liens vers des sites tiers. Nous n'avons aucun contrôle sur ces sites et déclinons toute responsabilité quant à leur contenu, leurs services ou leur politique de confidentialité.
   </p>
-  <p>
-    <strong>Usage du site :</strong> En utilisant ce site, vous acceptez de le faire de manière conforme à la loi. Vous vous engagez à ne pas perturber son fonctionnement (piratage, virus, etc.) ou à utiliser les informations publiées à des fins illicites.
-  </p>
 
   <h2>5. Protection des données personnelles</h2>
   <p>
-    {SITE_TITLE} respecte la confidentialité de vos données personnelles et s'efforce de se conformer à la réglementation applicable (notamment le RGPD).
+    Habitat Merveilleux respecte la confidentialité de vos données personnelles et s'efforce de se conformer à la réglementation applicable (notamment le RGPD).
   </p>
   <p>
-    <strong>Cookies :</strong> Le site ne dépose pas de cookie de mesure d'audience ni de cookie publicitaire. Pour plus d'informations, consultez notre <a href={`/${SITE_PATHS.privacy}/`}>politique de confidentialité</a>.
+    <strong>Cookies :</strong> Le site peut utiliser des cookies pour améliorer votre expérience. Vous avez la possibilité de les accepter ou de les refuser via les paramètres de votre navigateur.
+  </p>
+  <p>
+    <strong>Formulaires de contact :</strong> Les données collectées via le formulaire de contact sont utilisées uniquement pour répondre à vos demandes. Aucune information n'est partagée avec des tiers sans votre consentement explicite.
   </p>
   <p>Pour toute question relative à vos données personnelles, contactez-nous à : {SITE_CONFIG.contact_email}</p>
 
   <h2>6. Hébergement</h2>
   <p>Le site est hébergé par :</p>
   <p>
-    <strong>Hébergeur :</strong> o2switch, Chemin des Pardiaux, 63000 Clermont-Ferrand.<br />
-    <strong>Téléphone :</strong> +33 4 44 44 60 40.
+    <strong>Hébergeur :</strong> o2switch, Chemin des Pardiaux, 63000 Clermont-Ferrand. Téléphone : +33 4 44 44 60 40.
   </p>
 
-  <h2>7. Modification des CGU</h2>
-  <p>
-    Nous nous réservons le droit de modifier les présentes CGU à tout moment. Il vous appartient de consulter régulièrement cette page pour vous tenir informé des éventuels changements.
-  </p>
-
-  <h2>8. Informations légales</h2>
-  <p>Le site <strong>{SITE_TITLE}</strong> est édité par :</p>
+  <h2>7. Informations légales</h2>
+  <p>Le présent site est édité par la société <strong>OVELIUM</strong>.</p>
   <ul>
-    <li><strong>Dénomination sociale :</strong> OVELIUM</li>
-    <li><strong>Forme juridique :</strong> Société à Responsabilité Limitée à associé unique (EURL)</li>
-    <li><strong>Capital social :</strong> 100,00 €</li>
-    <li><strong>Siège social :</strong> 254 Rue Vendôme, 69003 Lyon</li>
-    <li><strong>Immatriculation :</strong> 101 370 823 R.C.S. Lyon</li>
-    <li><strong>Numéro de TVA intracommunautaire :</strong> FR 21101370823</li>
-    <li><strong>Directeur de la publication :</strong> Monsieur Lomig LE MANAC'H, en sa qualité de Gérant</li>
+    <li><strong>Forme juridique :</strong> Société à Responsabilité Limitée à associé unique (EURL).</li>
+    <li><strong>Capital social :</strong> 100,00 €.</li>
+    <li><strong>Siège social :</strong> 254 Rue Vendôme, 69003 Lyon.</li>
+    <li><strong>Immatriculation :</strong> 101 370 823 R.C.S. Lyon.</li>
+    <li><strong>Numéro de TVA intracommunautaire :</strong> FR 21101370823.</li>
+    <li><strong>Directeur de la publication :</strong> Monsieur Lomig LE MANAC'H, en sa qualité de Gérant.</li>
   </ul>
   <p>
     Pour toute question ou demande, veuillez nous contacter :<br />
     <strong>Adresse e-mail :</strong> {SITE_CONFIG.contact_email}
   </p>
 
-  <h2>9. Signature éditoriale</h2>
-  <p>
-    Les articles du site sont signés collectivement par <strong>la rédaction de {SITE_TITLE}</strong>.
-    Cette mention désigne le média, et non un auteur individuel. Le directeur de la publication demeure
-    Monsieur Lomig LE MANAC'H.
-  </p>
-
-  <h2>10. Loi applicable et juridiction compétente</h2>
+  <h2>8. Loi applicable et juridiction compétente</h2>
   <p>
     Les présentes CGU sont régies par la législation française. En cas de litige, et après une tentative de résolution amiable, les tribunaux français seront seuls compétents.
   </p>
+  <p>Merci de votre visite sur Habitat Merveilleux.</p>
 </section>
