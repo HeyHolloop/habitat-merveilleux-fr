@@ -455,18 +455,42 @@ img { max-width: 100%; height: auto; display: block; }
 .hm-filariane { font-size: 0.85rem; color: var(--mute); margin: 0 0 1rem; }
 .hm-filariane a:hover { color: var(--accent); }
 
-.hm-inst { padding: 2rem 0 3.5rem; max-width: 46rem; }
+.hm-inst { padding: 2.4rem 0 4rem; max-width: 46rem; }
 .hm-inst h1 {
   font-family: "DM Serif Display", serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 400;
-  margin: 0 0 1rem;
+  margin: 0 0 1.4rem;
+  line-height: 1.2;
 }
 .hm-inst h2 {
   font-family: "DM Serif Display", serif;
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: 400;
-  margin: 1.8rem 0 0.6rem;
+  margin: 2.6rem 0 1rem;
+  line-height: 1.25;
 }
-.hm-inst ul { list-style: disc; padding-left: 1.4rem; }
+.hm-inst h3 {
+  font-size: 1.05rem;
+  margin: 1.6rem 0 0.6rem;
+}
+.hm-inst p {
+  margin: 0 0 1.15rem;
+  line-height: 1.75;
+}
+.hm-inst ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin: 0.3rem 0 1.4rem;
+}
+.hm-inst li {
+  margin: 0 0 0.55rem;
+  line-height: 1.65;
+}
+.hm-inst li:last-child { margin-bottom: 0; }
+.hm-inst hr {
+  margin: 2.2rem 0 1.4rem;
+  border: 0;
+  border-top: 1px solid var(--filet);
+}
 .hm-inst a { color: var(--accent); text-decoration: underline; }
