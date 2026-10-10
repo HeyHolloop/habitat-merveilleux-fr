@@ -4,7 +4,9 @@ const here = Astro.url.pathname;
 ---
 <header class="hm-bandeau">
   <div class="hm-coquille hm-bandeau__rang">
-    <a class="hm-masthead" href="/">{SITE_CONFIG.ui.masthead}</a>
+    <a class="hm-masthead" href="/">
+      <img src="/images/logo.png" alt="Habitat Merveilleux" width="220" height="244" />
+    </a>
     <button class="hm-nav-toggle" type="button" data-hm-menu aria-expanded="false" aria-controls="hm-nav">
       {SITE_CONFIG.ui.menu}
     </button>

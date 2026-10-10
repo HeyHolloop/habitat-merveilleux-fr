@@ -109,11 +109,13 @@ img { max-width: 100%; height: auto; display: block; }
   padding-block: 0.65rem;
 }
 .hm-masthead {
-  font-family: "DM Serif Display", serif;
-  font-size: 1.55rem;
-  line-height: 1.15;
-  color: var(--ink);
-  white-space: nowrap;
+  display: block;
+  line-height: 0;
+}
+.hm-masthead img {
+  height: 5.6rem;
+  width: auto;
+  display: block;
 }
 .hm-nav {
   display: flex;
