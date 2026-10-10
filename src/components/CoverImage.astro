@@ -1,6 +1,4 @@
 ---
-import fs from "node:fs";
-
 interface Props {
   src: string;
   alt: string;
@@ -21,12 +19,7 @@ const {
   height,
 } = Astro.props;
 
-const webp =
-  src.startsWith("/") &&
-  /\.(jpg|jpeg)$/i.test(src) &&
-  fs.existsSync(`public${src.replace(/\.(jpg|jpeg)$/i, ".webp")}`)
-    ? src.replace(/\.(jpg|jpeg)$/i, ".webp")
-    : null;
+const webp = null;
 ---
 
 {webp ? (

@@ -197,15 +197,36 @@ img { max-width: 100%; height: auto; display: block; }
   .hm-pied__grille { grid-template-columns: 1fr; }
 }
 
+.hm-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("/images/home/nos-maisons-home.jpg") top center / cover no-repeat;
+  color: #fff;
+}
+.hm-hero__texte {
+  max-width: 52rem;
+  padding: 5rem 0;
+}
+.hm-hero h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  font-weight: 400;
+  margin: 0 0 0.8rem;
+  color: #fff;
+}
+.hm-hero p {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #fff;
+}
 .hm-accroche {
   padding: 2.2rem 0 1.2rem;
-}
-.hm-accroche h1 {
-  font-family: "DM Serif Display", serif;
-  font-size: clamp(2.6rem, 6vw, 4.4rem);
-  line-height: 1.05;
-  margin: 0 0 0.7rem;
-  font-weight: 400;
 }
 .hm-accroche h2 {
   font-family: "DM Serif Display", serif;
