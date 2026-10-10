@@ -93,6 +93,9 @@ export default defineConfig({
           return item;
         }
         const articleMatch = pathname.match(/^\/([^/]+)\/$/);
+        if (articleMatch?.[1] === "mandat-simple-immobilier-guide") {
+          return undefined;
+        }
         if (articleMatch && lastmodBySlug.has(articleMatch[1])) {
           item.lastmod = new Date(lastmodBySlug.get(articleMatch[1]));
           return item;

@@ -12,7 +12,7 @@ export function liveArticles(
   now = new Date(),
 ): CollectionEntry<"articles">[] {
   return posts
-    .filter((p) => isLiveArticle(p.data, now))
+    .filter((p) => isLiveArticle(p.data, now) && p.slug !== "mandat-simple-immobilier-guide")
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 

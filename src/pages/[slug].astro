@@ -13,7 +13,7 @@ import { withOrgAuthor, siteOrganization } from "../lib/schema";
 type InstPage = "about" | "legal" | "privacy";
 
 export async function getStaticPaths() {
-  const reserved = new Set(Object.values(SITE_PATHS));
+  const reserved = new Set([...Object.values(SITE_PATHS), "mandat-simple-immobilier-guide"]);
   const posts = liveArticles(await getCollection("articles")).filter((a) => !reserved.has(a.slug));
   const articles = posts.map((article) => ({
     params: { slug: article.slug },

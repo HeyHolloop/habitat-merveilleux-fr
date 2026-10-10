@@ -1,5 +1,7 @@
 RewriteEngine On
 
+RewriteRule ^mandat-simple-immobilier-guide/?$ https://www.studio27interieur.fr/mandat-simple-immobilier-guide/ [R=301,L]
+
 ErrorDocument 404 /404.html
 
 RewriteCond %{HTTPS} off
